@@ -1,0 +1,803 @@
+
+// Overrides
+$grid-gutter-width: 40px !default; 
+$border-radius-base:  4px !default;
+$padding-base-vertical: 14px !default;
+
+// $brand-primary: #52d3aa !default;
+// $brand-secondary: #3f95ea !default; 
+
+$brand-primary: 			#f7c873 !default;
+$brand-secondary: 		#41454f !default;
+$brand-success:         #58ca7e !default;
+$brand-info:            #1784fb !default;
+$brand-warning:         #fed330 !default;
+$brand-danger:          #fb4f59 !default;
+
+$brand-white: #fff !default;
+$brand-black: #000 !default;
+
+
+$input-border-focus:  $brand-primary !default;
+$form-group-margin-bottom:       30px !default;
+
+$font-primary: 'Playfair Display', times, serif;
+$font-secondary: 'Roboto', arial, sans-serif;;
+
+// Mixin
+@mixin transition($transition, $ease: ease) {
+    -moz-transition:    all $transition $ease;
+    -o-transition:      all $transition $ease;
+    -webkit-transition: all $transition $ease;
+    -ms-transition: 		all $transition $ease;
+    transition:         all $transition $ease;
+}
+@mixin fh5co-translateX($translatex) {
+	-moz-transform: translateX($translatex);
+	-webkit-transform: translateX($translatex);
+	-ms-transform: translateX($translatex);
+	-o-transform: translateX($translatex);
+	transform: translateX($translatex);
+}
+@mixin inline-block() {
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin flex() {
+	display: -webkit-box;      
+  	display: -moz-box;         
+  	display: -ms-flexbox;      
+  	display: -webkit-flex;     
+  	display: flex;             
+}
+@mixin flexwrap() {
+	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap; 
+	-moz-flex-wrap: wrap; 
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon/icomoon.eot?srf3rx');
+	src:url('../fonts/icomoon/icomoon.eot?srf3rx#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon.ttf?srf3rx') format('truetype'),
+		url('../fonts/icomoon/icomoon.woff?srf3rx') format('woff'),
+		url('../fonts/icomoon/icomoon.svg?srf3rx#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@mixin icomoon() {
+	
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+}
+
+// Import 
+@import 'bootstrap/mixins';
+@import 'bootstrap/variables';
+
+
+
+html {
+	background: $brand-white;
+}
+body {
+	font-family: $font-secondary;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 1.8;
+	color: #222;
+	background: $brand-white;
+	&.fh5co-overflow {
+		overflow-x: auto;	
+	}
+}
+
+::-webkit-selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+
+::-moz-selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+
+::selection {
+  color: $brand-white;
+  background: $brand-primary;
+}
+
+
+a {
+	color: $brand-primary;
+	@include transition(.5s);
+	&:hover, &:focus, &:active {
+		color: darken($brand-primary, 15%);
+		outline: none;
+		text-decoration: none;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $font-primary;
+	color: $brand-black;
+}
+p {
+	margin-bottom: 30px;
+}
+
+// Buttons
+.btn {
+	margin-right: 4px;
+	margin-bottom: 4px;
+	font-family: $font-primary;
+	font-size: 12px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-weight: 700;
+	@include border-radius(4px);
+	@include transition(.5s);
+	&.btn-md {
+		padding: 10px 20px!important;
+	}
+	&.btn-lg {
+		padding: 18px 36px!important;
+	}
+	&:hover, &:active, &:focus {
+		box-shadow: none!important;
+		outline: none!important;
+	}
+}
+.btn-primary {
+	background: $brand-primary;
+	color: $brand-white;
+	border: 2px solid $brand-primary;
+	&:hover, &:focus, &:active {
+		background: darken($brand-primary, 5%)!important;
+		border-color: darken($brand-primary, 5%)!important;
+	}
+	&.btn-outline {
+		background: transparent;
+		color: $brand-primary;
+		border: 2px solid $brand-primary;
+		&:hover, &:focus, &:active {
+			background: $brand-primary;
+			color: $brand-white;
+		}
+	}
+}
+.btn-success {
+	background: $brand-success;
+	color: $brand-white;
+	border: 2px solid $brand-success;
+	&:hover, &:focus, &:active {
+		background: darken($brand-success, 5%)!important;
+		border-color: darken($brand-success, 5%)!important;
+	}
+	&.btn-outline {
+		background: transparent;
+		color: $brand-success;
+		border: 2px solid $brand-success;
+		&:hover, &:focus, &:active {
+			background: $brand-success;
+			color: $brand-white;
+		}
+	}
+}
+.btn-info {
+	background: $brand-info;
+	color: $brand-white;
+	border: 2px solid $brand-info;
+	&:hover, &:focus, &:active {
+		background: darken($brand-info, 5%)!important;
+		border-color: darken($brand-info, 5%)!important;
+	}
+	&.btn-outline {
+		background: transparent;
+		color: $brand-info;
+		border: 2px solid $brand-info;
+		&:hover, &:focus, &:active {
+			background: $brand-info;
+			color: $brand-white;
+		}
+	}
+}
+.btn-warning {
+	background: $brand-warning;
+	color: $brand-white;
+	border: 2px solid $brand-warning;
+	&:hover, &:focus, &:active {
+		background: darken($brand-warning, 5%)!important;
+		border-color: darken($brand-warning, 5%)!important;
+	}
+	&.btn-outline {
+		background: transparent;
+		color: $brand-warning;
+		border: 2px solid $brand-warning;
+		&:hover, &:focus, &:active {
+			background: $brand-warning;
+			color: $brand-white;
+		}
+	}
+}
+.btn-danger {
+	background: $brand-danger;
+	color: $brand-white;
+	border: 2px solid $brand-danger;
+	&:hover, &:focus, &:active {
+		background: darken($brand-danger, 5%)!important;
+		border-color: darken($brand-danger, 5%)!important;
+	}
+	&.btn-outline {
+		background: transparent;
+		color: $brand-danger;
+		border: 2px solid $brand-danger;
+		&:hover, &:focus, &:active {
+			background: $brand-danger;
+			color: $brand-white;
+		}
+	}
+}
+
+.btn-outline {
+	background: none;
+	border: 2px solid lighten($brand-black, 50%);
+	font-size: 12px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	@include transition(.3s);
+	&:hover, &:focus, &:active {
+		box-shadow: none;
+	}
+}
+
+// Form Input Field
+.form-control {
+	box-shadow: none;
+	background: transparent;
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	height: 54px;
+	font-size: 18px;
+	font-weight: 300;
+  	&:active, &:focus {
+  		outline: none;
+		box-shadow: none;
+		border-color: $brand-primary;
+  }
+}
+
+#fh5co-header {
+	padding: 3em 3em;
+	float: left;
+	width: 100%;
+	@media screen and (max-width: $screen-lg) {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	@media screen and (max-width: $screen-xs) {
+		padding-bottom: 5em!important;
+	}
+	.fh5co-nav-toggle {
+		position: absolute;
+		top: 4.2em;
+		left: 3em;
+		z-index: 99;
+		@media screen and (max-width :$screen-lg) {
+			top: 4em;
+			left: 15px;
+		}
+		@media screen and (max-width: $screen-sm) {
+			top: 2.5em;
+			left: 15px;
+		}
+	}
+	.fh5co-social {
+		
+		position: absolute!important;
+		right: 3em!important;
+		top: 3.2em;
+		z-index: 99;
+		@include transition(.5s);
+		@media screen and (max-width :$screen-lg) {
+			right: 15px!important;
+			top: 3.2em;
+		}
+		@media screen and (max-width :$screen-sm) {
+			right: 15px!important;
+			top: 1.5em;
+		}
+		@media screen and (max-width: $screen-xs) {
+			right: inherit!important;
+			left: inherit!important;
+			top: 5em;
+			left: 50%!important;
+			margin-left: -50px;
+		}
+	}
+	@media screen and (max-width: $screen-sm) {
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	#fh5co-logo {
+		
+		text-align: center;
+		a {
+			color: $brand-black;
+			sup {
+				font-size: 20px;
+				top: -20px;
+			}
+		}
+	}
+
+}
+.fh5co-post-prev,
+.fh5co-post-next {
+	position: fixed;
+	z-index: 999;
+	top: 50%;
+	height: 50px;
+	margin-top: -25px;
+	color: $brand-black;
+	text-transform: uppercase;
+	font-weight: bold;
+	@include transition(.5s);
+	@media screen and (max-width: $screen-sm) {
+		position: relative;
+		text-align: center;
+		@include inline-block;
+
+	}
+	span {
+		vertical-align: base;
+		width: 100px;
+		i {
+			
+			top: 7px;
+			position: relative;
+			font-size: 30px;
+			color: $brand-black;
+		}
+	}
+}
+.fh5co-post-prev {
+	left: 0;
+	margin-left: -25px;
+	&:hover {
+		margin-left: 10px;
+		color: $brand-black;
+	}
+	@media screen and (max-width: $screen-sm) {
+		margin-left: 15px;
+		float: left;
+	}
+}
+.fh5co-post-next {
+	right: 0;	
+	margin-right: -25px;
+	
+	&:hover {
+		margin-right: 10px;
+		color: $brand-black;
+	}
+	@media screen and (max-width: $screen-sm) {
+		margin-right: 15px;
+		float: right;
+	}
+}
+.fh5co-post-entry {
+	&.single-entry {
+		.fh5co-article-title {
+			font-size: 80px;
+			@media screen and (max-width: $screen-md) {
+				font-size: 56px;
+			}
+			@media screen and (max-width: $screen-sm) {
+				font-size: 34px;
+			}
+		}
+	}
+	article {
+		text-align: center;
+		float: left;
+		margin-bottom: 110px;
+		padding-left: 3em;
+		padding-right: 3em;
+		@media screen and (max-width: $screen-lg) {
+			margin-bottom: 80px;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		@media screen and (max-width: $screen-md) {
+			margin-bottom: 80px;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		@media screen and (max-width: $screen-sm) {
+			margin-bottom: 40px;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		a {
+			img {
+				opacity: 1;
+				@include transition(.5s);
+			}
+			&:hover {
+				img {
+					opacity: .4;
+				}
+			}
+		}
+		figure {
+			margin-bottom: 30px;
+		}
+		h2 {
+			font-family: $font-primary;
+			font-size: 34px;
+			color: $brand-black;
+			margin-bottom: 30px;
+			a {
+				color: $brand-black;
+			}
+			@media screen and (max-width: $screen-md) {
+				font-size: 26px;
+			}
+			@media screen and (max-width: $screen-sm) {
+				font-size: 24px;
+				margin-bottom: 20px;
+			}
+		}
+		.fh5co-meta {
+			font-size: 16px;
+			font-family: $font-secondary;
+			color: lighten($brand-black, 60%);
+			margin-bottom: 20px;
+			display: block;
+			@media screen and (max-width: $screen-xs) {
+				margin-bottom: 10px;
+			}
+			&.fh5co-date {
+				text-transform: uppercase;
+				letter-spacing: 2px;
+			}
+		}
+
+		.content-article {
+			padding-top: 4em;
+			a {
+				text-decoration: underline;
+			}
+			blockquote {
+				border-left: none;
+				padding-left: 0;
+				p {
+					font-family: $font-primary;
+					font-size: 27px;
+					font-style: italic;
+					line-height: 1.5;
+					cite {
+						padding-top: 20px;
+						display: block;
+						font-size: 16px;
+						font-style: normal;
+						color: lighten($brand-black, 50%);
+					}
+				}
+
+			} 
+		}
+
+		.fh5co-highlight {
+			border: 4px solid lighten($brand-black, 95%);
+			padding: 30px;
+			width: 100%;
+			margin-bottom: 30px;
+			&.right {
+				float: right;
+				margin-left: 30px;
+			}
+			&.left {
+				float: left;
+			}
+			h4 {
+				font-size: 14px;
+				letter-spacing: 2px;
+				color: lighten($brand-black, 70%);
+				text-transform: uppercase;
+				font-family: $font-secondary;
+			}
+			p {
+				font-family: $font-primary;
+				// font-style: italic;
+				color: $brand-black;
+				font-size: 20px;
+			}
+		}
+	}
+}
+
+.fh5co-social {
+	padding: 0;
+	margin: 30px 0 0 0;
+	position: relative;
+	li {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		display: inline;
+		a {
+			font-size: 20px;
+			padding: 4px;
+			color: $brand-black;
+		}
+	}
+}
+
+figure {
+	figcaption {
+		padding-top: 15px;
+		font-size: 14px;
+		// font-style: italic;
+		color: lighten($brand-black, 60%);
+	}
+}
+
+#fh5co-offcanvas {
+	background: $brand-white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 700px;
+	z-index: 99999;
+	overflow-y: auto;
+	opacity: 0;
+	display: none;
+	@media screen and (max-width: $screen-sm) {
+		padding-top: 30px;
+		width: 270px;
+	}
+	.fh5co-close-offcanvas {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		font-size: 30px;
+		width: 30px;
+		overflow: hidden;
+		color: lighten($brand-black, 80%);
+		@include transition(.3s);
+		@media screen and (max-width: $screen-sm) {
+			top: 5px;
+		}
+		&:hover {
+			width: 85px;
+			color: $brand-black;
+		}
+		> span {
+			width: 100px;
+			@include inline-block;
+			> span {
+				top: 7px;
+				position: relative;
+				font-size: 18px;
+				vertical-align: top;
+			}
+		}
+		
+	}
+	.fh5co-box {
+		float: left;
+		margin-bottom: 30px;
+		width: 100%;
+	}
+	.fh5co-menu,
+	.fh5co-bio {
+		width: 50%;
+		padding: 50px;
+		@media screen and (max-width: $screen-sm) {
+			width: 100%;
+			padding: 30px;
+		}
+	}
+	.fh5co-bio {
+		text-align: center;
+		float: left;
+		figure {
+			text-align: center;
+			display: block;
+			margin-bottom: 30px;
+		}
+		img {
+			width: 180px;
+			margin: 0 auto;
+			@include border-radius(50%);
+		}
+		p {
+			font-size: 16px;
+		}
+	}
+	.heading {
+		font-size: 16px;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		color: lighten($brand-black, 80%);
+		margin-bottom: 30px;
+	}
+	.fh5co-menu {
+		float: right;
+
+		ul {
+			padding: 0;
+			margin: 0;
+			li {
+				padding: 0;
+				margin: 0 0 10px 0;
+				list-style: none;
+				display: block;
+				a {
+					color: $brand-black;
+				}
+			}
+		}
+	}
+
+}
+
+
+#fh5co-footer {
+	padding: 3em 0;
+	text-align: center;
+}
+
+
+.to-animate,
+.to-animate-2,
+.animate-box {
+	.js & {
+		opacity: 0;	
+	}
+}
+
+// Burger Menu
+.fh5co-nav-toggle {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  &.active i {
+		&::before, &::after {
+			background: $brand-primary;
+		}
+  }
+  &:hover, &:focus, &:active {
+  	outline: none;
+  	border-bottom: none!important;
+  }
+  i {
+  	position: relative;
+	  @include inline-block;
+	  width: 25px;
+	  height: 3px;
+	  color: #535659;
+	  font:bold 14px/.4 Helvetica;
+	  text-transform: uppercase;
+	  text-indent:-55px;
+	  background: #535659;
+	  transition: all .2s ease-out;
+		 &::before, &::after {
+	  	  content:'';
+		  width: 25px;
+		  height: 3px;
+		  background: #535659;
+		  position: absolute;
+		  left:0;
+		  @include transition(.2s);
+	  }
+  }
+}
+
+.fh5co-nav-toggle i::before {
+  top: -7px;
+}
+.fh5co-nav-toggle i::after {
+  bottom: -7px;
+}
+.fh5co-nav-toggle:hover i::before {
+  top: -10px;
+}
+.fh5co-nav-toggle:hover i::after {
+  bottom: -10px;
+}
+.fh5co-nav-toggle.active i {
+	background: transparent;
+}
+.fh5co-nav-toggle.active i::before {
+  top:0;
+  -webkit-transform: rotateZ(45deg);
+     -moz-transform: rotateZ(45deg);
+      -ms-transform: rotateZ(45deg);
+       -o-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+.fh5co-nav-toggle.active i::after {
+  bottom:0;
+  -webkit-transform: rotateZ(-45deg);
+     -moz-transform: rotateZ(-45deg);
+      -ms-transform: rotateZ(-45deg);
+       -o-transform: rotateZ(-45deg);
+          transform: rotateZ(-45deg);
+}
+.fh5co-nav-toggle {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  z-index: 21;
+  padding: 6px 0 0 0;
+  display: block;
+  margin: 0 auto;
+  display: block;
+  height: 44px;
+  width: 25px;
+  border-bottom: none!important;
+  @media screen and (max-width: $screen-sm) {
+		display: block;
+  }
+}
+
+
+
+
+// Menu bar Animate
+.fh5co-animated {
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.rp-b {
+	padding-bottom: 40px;
+}
+.cp-l {
+	padding-left: 50px;
+	@media screen and (max-width: $screen-md) {
+		padding-left: 15px;
+	}
+}
+.cp-r {
+	padding-right: 50px;
+	@media screen and (max-width: $screen-md) {
+		padding-right: 15px;
+	}
+}
+
+
+@media screen and (max-width: 480px) {
+	.col-xxs-12 {
+		width: 100%;
+		float: none;
+	}
+}
+
