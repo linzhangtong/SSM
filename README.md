@@ -1,7 +1,6 @@
 学习了一阵子的SSM框架，一直在各种博客，简书，慕课网学习，最后终于自己撸出来一个简单的个人相册。
 ***
 项目的演示效果：
-
 ![个人相册.gif](http://upload-images.jianshu.io/upload_images/3435345-a4747ccc476e7c51.gif?imageMogr2/auto-orient/strip)
 ***
 开发的工具及环境：
