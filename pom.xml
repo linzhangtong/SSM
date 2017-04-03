@@ -48,12 +48,18 @@
             <version>5.1.35</version>
             <scope>runtime</scope>
         </dependency>
+        <!--c3p0连接池-->
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.1.1</version>
         </dependency>
-
+        <!--druid==>阿里巴巴数据库连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.25</version>
+        </dependency>
         <!--2.dao框架:MyBatis依赖-->
         <dependency>
             <groupId>org.mybatis</groupId>
