@@ -53,24 +53,16 @@ public class MainController {
     }
     @RequestMapping(value = "upload",method = RequestMethod.POST)
     public String upload(@RequestParam("file") MultipartFile file,@Param("content") String content, HttpServletRequest request,Model model) throws IOException{
+        boolean result = false;
         //获取项目的根路径，将上传图片的路径与我们的资源路径在一起，才能显示
-        HttpSession session= request.getSession();
-        String path = session.getServletContext().getRealPath("/");
-        System.out.println("getRealPath('/'):"+path);
-        int end = path.indexOf("t",19);
-        String prePath = path.substring(0,end);
-        String realPath = prePath+"target\\demo\\WEB-INF\\jsp\\images";
-        System.out.println("DEBUG:"+realPath);
-        String picName = new Date().getTime()+".jpg";
         if (!file.isEmpty()){
-            FileUtils.copyInputStreamToFile(file.getInputStream(),new File(realPath,new Date().getTime()+".jpg"));
+            result= pictureService.uploadFile(file);
         }else if(content==null){
             content = "";//如果输入为null数据库不允许插入
         }
         //图片类的名字保存为路径+名字方便后期前端提取
         //将图片名字用时间戳保存，反正上传图片为中文乱码等问题
-       int code =  pictureService.InsertPicture("images/"+picName,content);
-        if (code==1) {
+        if (result) {
             List<Picture> pictures = pictureService.getAllPicture();
             model.addAttribute("pictures", pictures);
             return "index";

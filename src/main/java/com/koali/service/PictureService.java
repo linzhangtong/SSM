@@ -1,8 +1,10 @@
 package com.koali.service;
 
 import com.koali.entity.Picture;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Elric on 2017/3/24.
@@ -20,4 +22,10 @@ public interface PictureService {
      * @return 数据库成功返回1，失败返回0
      */
     int InsertPicture(String picName, String content);
+
+    /**上次图片
+     * @param multipartFile
+     * @return
+     */
+    boolean uploadFile(MultipartFile multipartFile);
 }
